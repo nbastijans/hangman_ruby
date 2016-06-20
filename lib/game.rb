@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require_relative 'word_storage'
 require_relative 'word_handler'
 class Game
@@ -7,16 +8,18 @@ class Game
   end
 
   def guess(letter)
-    if (WordHandler.guess(word, letter))
+    if WordHandler.guess(word, letter)
       puts "RICHTIG!"
+      return true
     else
       wrong_guess
       puts "LEIDER FALSCH!"
+      return false
     end
   end
 
   def wrong_guess
-    if try > 1 then
+    if try > 1
       self.try = try - 1
       return try
     else
@@ -24,9 +27,9 @@ class Game
     end
   end
 
-  attr_reader :word
+  attr_reader :word, :try
 
   private
 
-  attr_accessor :try
+  attr_writer :try
 end

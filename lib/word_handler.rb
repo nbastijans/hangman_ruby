@@ -1,15 +1,16 @@
+# frozen_string_literal: true
 class WordHandler
   class << self
     def guess(word, letter)
-        until !word.use_letter(letter) do
-          if (hits_a_char(word, letter))
-            hit_pos = hit_at_index(word, letter)
-            enter_guessed_word(word, letter, hit_pos)
-            return true
-          else
-            return false
-          end
+      while word.use_letter(letter)
+        if hits_a_char(word, letter)
+          hit_pos = hit_at_index(word, letter)
+          enter_guessed_word(word, letter, hit_pos)
+          return true
+        else
+          return false
         end
+      end
     end
 
     private
@@ -21,9 +22,7 @@ class WordHandler
     def hit_at_index(word, letter)
       indexes = []
       word.word.each.with_index do |value, index|
-        if (value == letter) then
-          indexes << index
-        end
+        indexes << index if value == letter
       end
       indexes
     end

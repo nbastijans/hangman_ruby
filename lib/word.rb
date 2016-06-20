@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Word
   def initialize(word)
     @word = word.split(//)
@@ -6,7 +7,7 @@ class Word
   end
 
   def use_letter(letter)
-    if (!used_letters.include? letter) then
+    if !used_letters.include? letter
       used_letters << letter
       return true
     else
@@ -14,10 +15,6 @@ class Word
     end
   end
 
-  attr_reader :word
-  attr_accessor :used_letters, :word_guess
-
-  private
-
-  attr_writer :try
+  attr_reader :word, :used_letters
+  attr_accessor :word_guess
 end

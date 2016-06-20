@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class WordReader
   class << self
     def insert_in_storage(storage)
