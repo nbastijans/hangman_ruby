@@ -18,6 +18,12 @@ class Game
     end
   end
 
+  attr_reader :word
+
+  private
+
+  attr_writer :try
+
   def wrong_guess
     if try > 1
       self.try = try - 1
@@ -26,10 +32,4 @@ class Game
       return false
     end
   end
-
-  attr_reader :word, :try
-
-  private
-
-  attr_writer :try
 end

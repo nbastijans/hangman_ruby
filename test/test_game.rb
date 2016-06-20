@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 require 'test_helper'
 require 'game'
-require 'word'
-
 describe Game do
   let(:word) { stub("Word") }
 

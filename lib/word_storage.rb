@@ -9,7 +9,7 @@ class WordStorage
   end
 
   def index
-    words
+    words.dup
   end
 
   def random
