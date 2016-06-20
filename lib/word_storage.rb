@@ -11,11 +11,11 @@ class WordStorage
     words
   end
 
-  def length
-    words.length
+  def random
+    words.sample
   end
 
   private
 
-  attr_accessor :word
+  attr_accessor :words
 end

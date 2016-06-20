@@ -5,9 +5,19 @@ class Word
     @word_guess = Array.new(word.length, "_")
   end
 
-  def guess(letter)
-
+  def use_letter(letter)
+    if (!used_letters.include? letter) then
+      used_letters << letter
+      return true
+    else
+      return false
+    end
   end
 
-  attr_reader :word, :used_letters, :word_guess
+  attr_reader :word
+  attr_accessor :used_letters, :word_guess
+
+  private
+
+  attr_writer :try
 end
