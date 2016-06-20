@@ -1,24 +1,19 @@
 # frozen_string_literal: true
 require_relative 'word_storage'
-require_relative 'word_handler'
+
 class Game
   def initialize(word)
     @word = word
-    @try = 11
+    @try = 50
   end
 
   def guess(letter)
-    if WordHandler.guess(word, letter)
-      puts "RICHTIG!"
-      return true
-    else
-      wrong_guess
-      puts "LEIDER FALSCH!"
-      return false
-    end
+    wrong_guess if word.used_letter letter
+    word.uncover_letter letter if word.has_letter letter
+    wrong_guess if !word.has_letter letter
   end
 
-  attr_reader :word
+  attr_reader :word, :try
 
   private
 

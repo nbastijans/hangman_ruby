@@ -4,7 +4,7 @@ class WordReader
     def insert_in_storage(storage)
       data = File.readlines("wordlist.txt")
       data.each do |value|
-        storage.insert(value)
+        storage.insert(value.chomp)
       end
     end
   end
