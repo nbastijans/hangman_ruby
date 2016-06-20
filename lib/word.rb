@@ -6,6 +6,20 @@ class Word
     @word_guess = Array.new(word.length, "_")
   end
 
+  def has_letter(letter)
+    word.include? letter
+  end
+
+  def used_letter(letter)
+    used_letters.include? letter
+  end
+
+  def uncover_letter(letter)
+    word.each.with_index do |value, index|
+      word_guess[index] = letter if value == letter
+    end
+  end
+
   def use_letter(letter)
     if !used_letters.include? letter
       used_letters << letter
