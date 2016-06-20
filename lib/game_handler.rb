@@ -1,9 +1,11 @@
+require_relative 'word'
 require_relative 'word_storage'
 require_relative 'word_handler'
 class Game
-  def initialize(word)
-    @word = word
+  def initialize
     @try = 11
+    @word_storage = WordStorage.new
+    @word = Word.new(@word_storage.random)
   end
 
   def guess(letter)
