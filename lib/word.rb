@@ -3,8 +3,26 @@ class Word
   def initialize(word)
     @word = word.split(//)
     @used_letters = []
-    @word_guess = Array.new(word.length, "_")
   end
+
+  def guess(letter)
+    return false if used_letter letter
+    return uncover_letter letter if has_letter letter
+    return false unless has_letter letter
+  end
+
+  def word_guess
+    uncovered = []
+    word.each.with_index do |value, index|
+      uncovered[index] = "_" unless used_letters.include? value
+      uncovered[index] = value if used_letters.include? value
+    end
+    uncovered
+  end
+
+  attr_reader :word, :used_letters
+
+  private
 
   def has_letter(letter)
     word.include? letter
@@ -15,9 +33,8 @@ class Word
   end
 
   def uncover_letter(letter)
-    word.each.with_index do |value, index|
-      word_guess[index] = letter if value == letter
-    end
+    use_letter letter
+    true
   end
 
   def use_letter(letter)
@@ -28,7 +45,4 @@ class Word
       return false
     end
   end
-
-  attr_reader :word, :used_letters
-  attr_accessor :word_guess
 end
