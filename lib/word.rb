@@ -7,7 +7,7 @@ class Word
 
   def guess(letter)
     return false if used_letter letter
-    return uncover_letter letter if letter? letter
+    return use_letter letter if letter? letter
     return false unless letter? letter
   end
 
@@ -30,11 +30,6 @@ class Word
 
   def used_letter(letter)
     used_letters.include? letter
-  end
-
-  def uncover_letter(letter)
-    use_letter letter
-    true
   end
 
   def use_letter(letter)
