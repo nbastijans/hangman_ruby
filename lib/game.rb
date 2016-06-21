@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 require_relative 'word_storage'
-
+# Game Class
 class Game
   def initialize(word)
     @word = word
@@ -8,9 +8,8 @@ class Game
   end
 
   def guess(letter)
-    unless loose?
-      reduce_try unless word.guess letter
-    end
+    return if loose? || win?
+    reduce_try unless word.guess letter
   end
 
   def loose?
@@ -28,9 +27,8 @@ class Game
   attr_writer :try
 
   def reduce_try
-    if try > 0
-      self.try = try - 1
-      try
-    end
+    return 0 unless try > 0
+    self.try = try - 1
+    try
   end
 end
