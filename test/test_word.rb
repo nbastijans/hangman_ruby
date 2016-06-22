@@ -18,4 +18,9 @@ describe Word do
     word.guess("e")
     word.word_guess.must_equal %w(_ e _ _)
   end
+
+  it 'generates a string out of the array' do
+    word = Word.new("test")
+    word.to_string.must_equal "test"
+  end
 end

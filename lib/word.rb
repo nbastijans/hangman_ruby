@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class Word
   def initialize(word)
-    @word = word.split(//)
+    @word = word.upcase.split(//)
     @used_letters = []
   end
 
@@ -18,6 +18,10 @@ class Word
       uncovered[index] = value if used_letters.include? value
     end
     uncovered
+  end
+
+  def to_string
+    word.join("")
   end
 
   attr_reader :word, :used_letters

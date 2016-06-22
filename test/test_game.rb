@@ -3,9 +3,9 @@ require 'test_helper'
 require 'game'
 describe Game do
   let(:word) { stub("Word") }
+  let(:word_guess) { stub }
 
   it 'checks a right guess' do
-    word_guess = stub
     word.expects(:guess).with("a").returns(true)
     word.expects(:word_guess).returns(word_guess)
     word_guess.expects(:include?).returns(true)
@@ -15,7 +15,6 @@ describe Game do
   end
 
   it 'checks a wrong guess' do
-    word_guess = stub
     word.expects(:guess).with("a").returns(false)
     word.expects(:word_guess).returns(word_guess)
     word_guess.expects(:include?).returns(true)
