@@ -21,7 +21,7 @@ class Game
   end
 
   def win?
-    !word.word_guess.include? "_"
+    !word.uncovered_word.include? "_"
   end
 
   attr_reader :word, :try

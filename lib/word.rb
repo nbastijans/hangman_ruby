@@ -11,7 +11,7 @@ class Word
     return false unless letter? letter
   end
 
-  def word_guess
+  def uncovered_word
     uncovered = []
     word.each.with_index do |value, index|
       uncovered[index] = "_" unless used_letters.include? value

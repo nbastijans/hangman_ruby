@@ -9,10 +9,12 @@ word_storage = WordStorage.new
 WordReader.insert_in_storage(word_storage)
 word = Word.new word_storage.random
 game = Game.new(word)
+view = View.new(game)
 
 until game.finished?
-  View.render(word, game)
-  View.get_guess_input(game)
+  view.render(word, game)
+
+  view.get_guess_input(game)
 end
 
 puts "GEWONNEN!! Das Wort lautet: " + word.to_string if game.win?

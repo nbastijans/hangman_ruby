@@ -5,7 +5,7 @@ require 'word'
 describe Word do
   it 'checks if a letter guess was right' do
     word = Word.new("test")
-    word.guess("t").must_equal true
+    word.guess("T").must_equal true
   end
 
   it 'checks if a letter guess was wrong' do
@@ -15,12 +15,12 @@ describe Word do
 
   it 'builds the game array' do
     word = Word.new("test")
-    word.guess("e")
-    word.word_guess.must_equal %w(_ e _ _)
+    word.guess("E")
+    word.uncovered_word.must_equal %w(_ E _ _)
   end
 
   it 'generates a string out of the array' do
     word = Word.new("test")
-    word.to_string.must_equal "test"
+    word.to_string.must_equal "TEST"
   end
 end
