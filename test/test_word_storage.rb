@@ -13,4 +13,9 @@ describe WordStorage do
     word_storage.insert("test2")
     word_storage.index.must_equal %w(test test2)
   end
+  it 'gives a random word from the list' do
+    word_storage.insert("test")
+    word_storage.insert("test2")
+    word_storage.index.must_include word_storage.random
+  end
 end

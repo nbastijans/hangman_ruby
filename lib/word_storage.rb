@@ -18,5 +18,5 @@ class WordStorage
 
   private
 
-  attr_accessor :words
+  attr_reader :words
 end
