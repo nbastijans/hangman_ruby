@@ -29,4 +29,9 @@ describe Word do
     word.guess("E")
     word.used_letters.must_equal ["E"]
   end
+
+  it 'persists the word' do
+    word = Word.new("test")
+    word.word.must_equal %w(T E S T)
+  end
 end
