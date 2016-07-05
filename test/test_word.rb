@@ -23,4 +23,10 @@ describe Word do
     word = Word.new("test")
     word.to_string.must_equal "TEST"
   end
+
+  it 'persists all used letters' do
+    word = Word.new("test")
+    word.guess("E")
+    word.used_letters.must_equal ["E"]
+  end
 end
