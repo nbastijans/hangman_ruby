@@ -24,13 +24,14 @@ describe Word do
     word.to_string.must_equal "TEST"
   end
 
-  it 'persists all used letters' do
+  it 'saves all used letters in an array' do
     word = Word.new("test")
     word.guess("E")
-    word.used_letters.must_equal ["E"]
+    word.guess("S")
+    word.used_letters.must_equal %w(E S)
   end
 
-  it 'persists the word' do
+  it 'saves the hangman word in an array' do
     word = Word.new("test")
     word.word.must_equal %w(T E S T)
   end
