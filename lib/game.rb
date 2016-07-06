@@ -21,7 +21,7 @@ class Game
   end
 
   def win?
-    !word.uncovered_word.include? "_"
+    word.completed?
   end
 
   attr_reader :word, :try
