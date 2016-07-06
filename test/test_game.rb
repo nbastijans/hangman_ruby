@@ -5,6 +5,11 @@ describe Game do
   let(:word) { stub("Word") }
   let(:uncovered_word) { stub("UncoveredWord") }
 
+  it 'starts with 11 trys' do
+    game = Game.new(word)
+    game.try.must_equal 11
+  end
+
   it 'checks a right guess' do
     word.expects(:guess).with("A").returns(true)
     word.expects(:completed?).returns(false)
