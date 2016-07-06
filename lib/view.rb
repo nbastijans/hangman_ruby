@@ -7,7 +7,7 @@ class View
   def render(word)
     system "clear"
     puts "Übrige Versuche: " + game.try.to_s
-    word.uncovered_word.each { |a| print a }
+    puts word.uncovered_word.join
   end
 
   def get_guess_input
