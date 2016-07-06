@@ -8,19 +8,19 @@ class Game
   end
 
   def guess(letter)
-    return if loose? || win?
+    return if lost? || won?
     reduce_try unless word.guess letter
   end
 
   def finished?
-    win? || loose?
+    won? || lost?
   end
 
-  def loose?
+  def lost?
     try < 1
   end
 
-  def win?
+  def won?
     word.completed?
   end
 
