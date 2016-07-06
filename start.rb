@@ -12,9 +12,9 @@ game = Game.new(word)
 view = View.new(game)
 
 until game.finished?
-  view.render(word, game)
+  view.render(word)
 
-  view.get_guess_input(game)
+  view.get_guess_input
 end
 
 puts "GEWONNEN!! Das Wort lautet: " + word.to_string if game.win?
