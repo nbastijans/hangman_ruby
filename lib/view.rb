@@ -6,7 +6,7 @@ class View
 
   def render(word, game)
     system "clear"
-    puts "Übrige Versuche: " + game.attempts.to_s
+    puts "Übrige Versuche: " + game.attempts_left.to_s
     word.uncovered_word.each { |a| print a }
   end
 
