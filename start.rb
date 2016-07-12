@@ -14,7 +14,7 @@ view = View.new(game)
 until game.finished?
   puts view.render(word)
 
-  print view.guess_input
+  print view.output_for_input
 
   game.guess(gets.chomp.upcase)
 end
