@@ -12,10 +12,11 @@ game = Game.new(word)
 view = View.new(game)
 
 until game.finished?
-  view.render(word, game)
-
-  view.get_guess_input(game)
+  print view.render(word)
+  game.guess(gets.chomp.upcase)
 end
 
-puts "GEWONNEN!! Das Wort lautet: " + word.to_string if game.win?
-puts "VERLOREN!! Das Wort lautet: " + word.to_string if game.loose?
+puts view.render(word)
+
+puts "GEWONNEN!! Das Wort lautet: " + word.to_string if game.won?
+puts "VERLOREN!! Das Wort lautet: " + word.to_string if game.lost?

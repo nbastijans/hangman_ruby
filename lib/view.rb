@@ -4,18 +4,20 @@ class View
     @game = game
   end
 
-  def render(word, game)
-    system "clear"
-    puts "Übrige Versuche: " + game.attempts_left.to_s
-    word.uncovered_word.each { |a| print a }
-  end
-
-  def get_guess_input(game)
-    puts "\n\nEingabe: "
-    game.guess(gets.chomp.upcase)
+  def render(word)
+    render_game(word) + output_for_prompt
   end
 
   private
 
   attr_reader :game
+
+  def render_game(word)
+    "\033cÜbrige Versuche: " + game.try.to_s +
+      "\n\n" + word.uncovered_word.join
+  end
+
+  def output_for_prompt
+    "\n\nEingabe: "
+  end
 end
