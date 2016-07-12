@@ -4,12 +4,12 @@ require_relative 'word_storage'
 class Game
   def initialize(word)
     @word = word
-    @chances = 11
+    @attempts = 11
   end
 
   def guess(letter)
     return if lost? || won?
-    reduce_chances unless word.guess letter
+    reduce_attempts unless word.guess letter
   end
 
   def finished?
@@ -17,21 +17,21 @@ class Game
   end
 
   def lost?
-    chances < 1
+    attempts < 1
   end
 
   def won?
     word.completed?
   end
 
-  attr_reader :word, :chances
+  attr_reader :word, :attempts
 
   private
 
-  attr_writer :chances
+  attr_writer :attempts
 
-  def reduce_chances
-    self.chances = chances - 1
-    chances
+  def reduce_attempts
+    self.attempts = attempts - 1
+    attempts
   end
 end

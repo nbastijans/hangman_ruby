@@ -5,9 +5,9 @@ describe Game do
   let(:word) { stub("Word") }
   let(:uncovered_word) { stub("UncoveredWord") }
 
-  it 'starts with 11 chancess' do
+  it 'starts with 11 attemptss' do
     game = Game.new(word)
-    game.chances.must_equal 11
+    game.attempts.must_equal 11
   end
 
   it 'checks a right guess' do
@@ -15,7 +15,7 @@ describe Game do
     word.expects(:completed?).returns(false)
     game = Game.new(word)
     game.guess("A")
-    game.chances.must_equal 11
+    game.attempts.must_equal 11
   end
 
   it 'checks a wrong guess' do
@@ -23,7 +23,7 @@ describe Game do
     word.expects(:completed?).returns(false)
     game = Game.new(word)
     game.guess("A")
-    game.chances.must_equal 10
+    game.attempts.must_equal 10
   end
 
   it 'checks for lost' do
@@ -44,7 +44,7 @@ describe Game do
     game.won?.must_equal(true)
   end
 
-  it 'checks if the game is finished with losing the game' do
+  it 'checks if the game is finished after losing the game' do
     word.stubs(:guess).returns(false)
     word.stubs(:completed?).returns(false)
     game = Game.new(word)
@@ -55,13 +55,13 @@ describe Game do
     game.finished?.must_equal(true)
   end
 
-  it 'checks if the game is finished with winning the game' do
+  it 'checks if the game is finished after winning the game' do
     word.stubs(:completed?).returns(true)
     game = Game.new(word)
     game.finished?.must_equal(true)
   end
 
-  it 'checks if the word is initialized correct' do
+  it 'checks if the word is initialized correctly' do
     word.stubs(:to_string).returns("TEST")
     game = Game.new(word)
     game.word.to_string.must_equal("TEST")
