@@ -31,7 +31,6 @@ class Game
   attr_writer :try
 
   def reduce_try
-    return 0 unless try > 0
     self.try = try - 1
     try
   end
