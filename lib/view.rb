@@ -9,7 +9,7 @@ class View
       "\n\n" + word.uncovered_word.join
   end
 
-  def output_for_input
+  def output_for_prompt
     "\n\nEingabe: "
   end
 
