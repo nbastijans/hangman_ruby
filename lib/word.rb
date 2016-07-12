@@ -24,6 +24,10 @@ class Word
     word.join("")
   end
 
+  def completed?
+    true if uncovered_word == word
+  end
+
   attr_reader :word, :used_letters
 
   private
