@@ -5,9 +5,9 @@ describe Game do
   let(:word) { stub("Word") }
   let(:uncovered_word) { stub("UncoveredWord") }
 
-  it 'starts with 11 trys' do
+  it 'starts with 11 chancess' do
     game = Game.new(word)
-    game.try.must_equal 11
+    game.chances.must_equal 11
   end
 
   it 'checks a right guess' do
@@ -15,7 +15,7 @@ describe Game do
     word.expects(:completed?).returns(false)
     game = Game.new(word)
     game.guess("A")
-    game.try.must_equal 11
+    game.chances.must_equal 11
   end
 
   it 'checks a wrong guess' do
@@ -23,7 +23,7 @@ describe Game do
     word.expects(:completed?).returns(false)
     game = Game.new(word)
     game.guess("A")
-    game.try.must_equal 10
+    game.chances.must_equal 10
   end
 
   it 'checks for lost' do
