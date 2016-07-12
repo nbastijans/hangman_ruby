@@ -43,4 +43,27 @@ describe Game do
     game = Game.new(word)
     game.won?.must_equal(true)
   end
+
+  it 'checks if the game is finished with losing the game' do
+    word.stubs(:guess).returns(false)
+    word.stubs(:completed?).returns(false)
+    game = Game.new(word)
+    game.finished?.must_equal(false)
+    11.times do
+      game.guess("A")
+    end
+    game.finished?.must_equal(true)
+  end
+
+  it 'checks if the game is finished with winning the game' do
+    word.stubs(:completed?).returns(true)
+    game = Game.new(word)
+    game.finished?.must_equal(true)
+  end
+
+  it 'checks if the word is initialized correct' do
+    word.stubs(:to_string).returns("TEST")
+    game = Game.new(word)
+    game.word.to_string.must_equal("TEST")
+  end
 end
