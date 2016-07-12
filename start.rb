@@ -18,5 +18,5 @@ end
 
 puts view.render(word)
 
-puts "GEWONNEN!! Das Wort lautet: " + word.to_string if game.win?
-puts "VERLOREN!! Das Wort lautet: " + word.to_string if game.loose?
+puts "GEWONNEN!! Das Wort lautet: " + word.to_string if game.won?
+puts "VERLOREN!! Das Wort lautet: " + word.to_string if game.lost?
