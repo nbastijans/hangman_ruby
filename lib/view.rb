@@ -13,7 +13,7 @@ class View
   attr_reader :game
 
   def render_game(word)
-    "\033cÜbrige Versuche: " + game.try.to_s +
+    "\033cÜbrige Versuche: " + game.attempts_left.to_s +
       "\n\n" + word.uncovered_word.join
   end
 
