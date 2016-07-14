@@ -4,17 +4,17 @@ class View
     @game = game
   end
 
-  def render(word)
-    render_game(word) + output_for_prompt
+  def render
+    render_game + output_for_prompt
   end
 
   private
 
   attr_reader :game
 
-  def render_game(word)
+  def render_game
     "\033cÜbrige Versuche: " + game.attempts_left.to_s +
-      "\n\n" + word.uncovered_word.join
+      "\n\n" + game.uncovered_word.join
   end
 
   def output_for_prompt
