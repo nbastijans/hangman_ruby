@@ -10,7 +10,8 @@ class Game
 
   def guess(letter)
     return if finished?
-    reduce_attempts unless use_letter letter
+    reduce_attempts unless letter_valid?(letter)
+    use_letter(letter) unless used_letter?(letter)
   end
 
   def uncovered_word
@@ -46,12 +47,16 @@ class Game
   attr_writer :attempts_left
 
   def use_letter(letter)
-    used_letters << letter unless used_letter(letter)
-    return false unless word.letter?(letter)
-    true
+    used_letters << letter
   end
 
-  def used_letter(letter)
+  def letter_valid?(letter)
+    return false if used_letter?(letter)
+    return true if word.letter?(letter)
+    false
+  end
+
+  def used_letter?(letter)
     used_letters.include? letter
   end
 
