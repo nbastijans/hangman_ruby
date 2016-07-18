@@ -8,6 +8,11 @@ class View
     render_game(word) + output_for_prompt
   end
 
+  def win_won_message(word)
+    return "GEWONNEN!! Das Wort lautet: " + word.to_string if game.won?
+    return "VERLOREN!! Das Wort lautet: " + word.to_string if game.lost?
+  end
+
   private
 
   attr_reader :game

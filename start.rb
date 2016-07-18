@@ -17,6 +17,4 @@ until game.finished?
 end
 
 puts view.render(word)
-
-puts "GEWONNEN!! Das Wort lautet: " + word.to_string if game.won?
-puts "VERLOREN!! Das Wort lautet: " + word.to_string if game.lost?
+puts view.win_won_message(word)
