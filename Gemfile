@@ -2,9 +2,6 @@
 source 'https://rubygems.org'
 
 gem 'rake', '< 11'
-gem 'json'
-gem 'pg'
-gem 'require_all'
 
 group :test, :development do
   gem 'minitest'

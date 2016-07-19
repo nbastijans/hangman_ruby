@@ -4,7 +4,6 @@ GEM
     ansi (1.5.0)
     ast (2.3.0)
     builder (3.2.2)
-    json (1.8.3)
     metaclass (0.0.4)
     minitest (5.9.0)
     minitest-reporters (1.1.9)
@@ -16,11 +15,9 @@ GEM
       metaclass (~> 0.0.1)
     parser (2.3.1.2)
       ast (~> 2.2)
-    pg (0.18.4)
     powerpack (0.1.1)
     rainbow (2.1.0)
     rake (10.5.0)
-    require_all (1.3.3)
     rubocop (0.40.0)
       parser (>= 2.3.1.0, < 3.0)
       powerpack (~> 0.1)
@@ -34,13 +31,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  json
   minitest
   minitest-reporters
   mocha
-  pg
   rake (< 11)
-  require_all
   rubocop
 
 BUNDLED WITH
