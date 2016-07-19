@@ -16,7 +16,5 @@ until game.finished?
   game.guess(gets.chomp.upcase)
 end
 
-puts view.render
-
-puts "GEWONNEN!! Das Wort lautet: " + word.to_string if game.won?
-puts "VERLOREN!! Das Wort lautet: " + word.to_string if game.lost?
+puts view.render(word)
+puts view.win_won_message(word)
