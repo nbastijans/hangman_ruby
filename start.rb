@@ -12,7 +12,7 @@ game = Game.new(word)
 view = View.new(game)
 
 until game.finished?
-  print view.render(word)
+  print view.render
   game.guess(gets.chomp.upcase)
 end
 

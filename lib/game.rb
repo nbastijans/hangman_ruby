@@ -5,11 +5,22 @@ class Game
   def initialize(word)
     @word = word
     @attempts_left = 11
+    @used_letters = []
   end
 
   def guess(letter)
-    return if lost? || won?
-    reduce_attempts unless word.guess letter
+    return if finished?
+    reduce_attempts unless letter_valid?(letter)
+    use_letter(letter) unless used_letter?(letter)
+  end
+
+  def uncovered_word
+    uncovered = []
+    word.word.each.with_index do |value, index|
+      uncovered[index] = "_" unless used_letters.include? value
+      uncovered[index] = value if used_letters.include? value
+    end
+    uncovered
   end
 
   def finished?
@@ -21,14 +32,33 @@ class Game
   end
 
   def won?
-    word.completed?
+    completed?
   end
 
-  attr_reader :word, :attempts_left
+  def completed?
+    return true if uncovered_word == word.word
+    false
+  end
+
+  attr_reader :word, :attempts_left, :used_letters
 
   private
 
   attr_writer :attempts_left
+
+  def use_letter(letter)
+    used_letters << letter
+  end
+
+  def letter_valid?(letter)
+    return false if used_letter?(letter)
+    return true if word.letter?(letter)
+    false
+  end
+
+  def used_letter?(letter)
+    used_letters.include? letter
+  end
 
   def reduce_attempts
     self.attempts_left = attempts_left - 1
